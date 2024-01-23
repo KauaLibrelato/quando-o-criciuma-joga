@@ -1,9 +1,9 @@
 import {useQuery} from '@tanstack/react-query';
-import axios from 'axios';
+import axios, {AxiosPromise} from 'axios';
 import {apiUrl} from '../../../utils/url';
 
-async function getNextMatches() {
-  const matches = axios.get(apiUrl);
+async function getNextMatches(): AxiosPromise<MatchData> {
+  const matches = axios.get<MatchData>(apiUrl);
   return matches;
 }
 
