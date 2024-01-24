@@ -1,7 +1,7 @@
 import {createBottomTabNavigator} from '@react-navigation/bottom-tabs';
 import React from 'react';
 import {Platform, View} from 'react-native';
-import {TabBar} from '../components/Others/TabBar';
+import {TabBar} from '../components';
 import {Home} from '../screens';
 import {theme} from '../styles/theme';
 
@@ -26,6 +26,14 @@ export function TabRoutes() {
         name="Home"
         options={{
           tabBarIcon: 'home' as any,
+        }}
+      />
+
+      <Screen
+        component={Home}
+        name="Table"
+        options={{
+          tabBarIcon: 'table' as any,
         }}
       />
     </Navigator>

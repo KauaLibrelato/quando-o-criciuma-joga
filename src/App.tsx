@@ -19,7 +19,10 @@ function App() {
   return (
     <QueryClientProvider client={queryClient}>
       <GestureHandlerRootView style={{flex: 1}}>
-        <StatusBar barStyle="dark-content" />
+        <StatusBar
+          barStyle="dark-content"
+          backgroundColor={theme.colors.bgColor}
+        />
         <SafeAreaView style={{flex: 1}}>
           <ThemeProvider theme={theme}>
             <Routes />

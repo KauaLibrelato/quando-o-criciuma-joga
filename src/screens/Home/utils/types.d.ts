@@ -71,3 +71,8 @@ interface MatchData {
   goals: Goals;
   score: Score;
 }
+
+interface MatchesResponse {
+  nextMatchesData: [MatchData];
+  lastMatchesData: [MatchData];
+}
