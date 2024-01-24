@@ -2,7 +2,7 @@ import {createBottomTabNavigator} from '@react-navigation/bottom-tabs';
 import React from 'react';
 import {Platform, View} from 'react-native';
 import {TabBar} from '../components';
-import {Home} from '../screens';
+import {Home, TableScreen} from '../screens';
 import {theme} from '../styles/theme';
 
 const {Navigator, Screen} = createBottomTabNavigator();
@@ -30,7 +30,7 @@ export function TabRoutes() {
       />
 
       <Screen
-        component={Home}
+        component={TableScreen}
         name="Table"
         options={{
           tabBarIcon: 'table' as any,

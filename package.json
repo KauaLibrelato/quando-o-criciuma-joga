@@ -33,6 +33,7 @@
     "react-native-screens": "^3.29.0",
     "react-native-svg": "^14.1.0",
     "react-native-switch-selector": "^2.3.0",
+    "react-native-table-component": "^1.2.2",
     "react-native-toast-message": "^2.2.0",
     "styled-components": "^6.1.8",
     "zustand": "^4.5.0"
