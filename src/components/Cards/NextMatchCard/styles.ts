@@ -53,7 +53,7 @@ export const StadiumText = styled.Text`
   font-size: 16px;
   margin-left: 8px;
   color: ${theme.colors.textColor};
-  max-width: 80px;
+  max-width: 100px;
   text-align: center;
 `;
 

@@ -26,11 +26,12 @@ export function NextMatchCard({one = false, data}: NextMatchCardProps) {
         </Styles.HourContainer>
 
         <Styles.StadiumContainer>
-          <Icon.HouseSimple size={20} color={theme.colors.textColor} />
           <Styles.StadiumText>{data?.fixture?.venue?.name}</Styles.StadiumText>
         </Styles.StadiumContainer>
 
-        <Styles.Championship>{data?.league?.name}</Styles.Championship>
+        <Styles.Championship>
+          {data?.league?.name?.split('-')[0]}
+        </Styles.Championship>
       </Styles.CenterContainer>
       <Styles.RightContainer>
         <Styles.Image source={{uri: data?.teams?.away?.logo}} />
