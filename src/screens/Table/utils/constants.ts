@@ -51,12 +51,12 @@ export const tableHeaderProps: TableProps = {
   textStyle: textHeaderStyle,
 };
 
-export const textRowsStyle: StyleProp<TextStyle> = {
+const textRowsStyle: StyleProp<TextStyle> = {
   textAlign: 'center',
   color: theme.colors.textColor,
 };
 
-export const tableRowsStyle: (rank: number) => ViewStyle = rank => ({
+const tableRowsStyle: (rank: number) => ViewStyle = rank => ({
   height: 40,
   backgroundColor: getBackgroundColorByRank(rank),
   borderBottomLeftRadius: getBorderByRank(rank),

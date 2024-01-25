@@ -9,8 +9,12 @@ import {
 } from '../../components';
 import {enumMatches} from '../../utils/constants';
 import * as Styles from './styles';
-import {setSwitchProps, switchOptions} from './utils/constants';
-import {shouldShowOne, useMatchesData} from './utils/functions';
+import {
+  setSwitchProps,
+  shouldShowOne,
+  switchOptions,
+  useMatchesData,
+} from './utils';
 
 export function Home() {
   const {data, isLoading} = useMatchesData();
@@ -55,7 +59,7 @@ export function Home() {
             <FlatList
               horizontal
               showsHorizontalScrollIndicator={false}
-              keyExtractor={(item: any) => item.fixture.id.toString()}
+              keyExtractor={item => item.fixture.id.toString()}
               data={
                 switchValue === enumMatches.NEXT
                   ? data?.nextMatchesData.slice(1, displayedItems)

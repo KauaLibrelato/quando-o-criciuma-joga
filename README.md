@@ -1,9 +1,8 @@
-**MEU APLICATIVO PADRÃO EM REACT NATIVE**
-
 ## Descroção do projeto
 
-Este projeto é um aplicativo padrão em React Native, com as configurações iniciais para iniciar um novo projeto.
-Com bibliotecas que utilizo em meus projetos, como:
+Este projeto é um aplicativo não oficial do Criciúma E.C em React Native
+
+**APLICATIVO QUANDO O CRICIÚMA JOGA**
 
 - Axios
 - React Hook Form

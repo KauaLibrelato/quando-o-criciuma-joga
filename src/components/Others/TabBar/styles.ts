@@ -1,5 +1,6 @@
-import {Platform} from 'react-native';
+import {Platform, StyleSheet} from 'react-native';
 import styled from 'styled-components/native';
+import {theme} from '../../../styles/theme';
 
 export const Container = styled.View`
   justify-content: center;
@@ -35,3 +36,25 @@ export const InsideButtonContainer = styled.View<{isFocused?: boolean}>`
   background-color: ${(props: {isFocused?: boolean}) =>
     props?.isFocused ? '#FFEFCC' : 'transparent'};
 `;
+
+export const viewStyles = StyleSheet.create({
+  contanerView: {
+    marginBottom: Platform.OS === 'ios' ? 38 : 24,
+    position: 'absolute',
+    justifyContent: 'center',
+    alignItems: 'center',
+    bottom: 0,
+    backgroundColor: theme.colors.white,
+    flexDirection: 'row',
+    borderRadius: 99,
+    gap: 8,
+    elevation: 10,
+    shadowColor: theme.colors.black,
+    shadowOffset: {
+      width: 0,
+      height: 2,
+    },
+    shadowOpacity: 0.2,
+    shadowRadius: 3.8,
+  },
+});

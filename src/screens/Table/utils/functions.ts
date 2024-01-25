@@ -9,7 +9,7 @@ export function calculateWinningPercentage(
   return winningPercentage;
 }
 
-export function getRowsTableData(item: TableData) {
+function getRowsTableData(item: TableData) {
   return [
     `${item?.team?.name.split('-')[0]}`,
     `${item?.points}`,
