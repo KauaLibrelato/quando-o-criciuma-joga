@@ -1,10 +1,10 @@
 import {useQuery} from '@tanstack/react-query';
 import axios, {AxiosPromise} from 'axios';
-import {apiUrl} from '../../../utils/url';
+import {enumMatches} from '../../../utils/constants';
 import {storageService} from '../../Table/utils/storageService';
 
 async function getNextMatches(): AxiosPromise<MatchesResponse> {
-  const matches = await axios.get<MatchesResponse>(apiUrl);
+  const matches = await axios.get<MatchesResponse>(String(process.env.API_URL));
   storageService.setItem('tableData', matches.data?.tableData);
   return matches;
 }
@@ -22,12 +22,15 @@ export function useMatchesData() {
 
 export const shouldShowOne = (
   data: MatchesResponse | undefined,
-  switchValue: string,
+  switchValue: number,
 ) => {
   const {nextMatchesData, lastMatchesData} = data || {};
-  if (switchValue === 'next' && nextMatchesData?.length === 1) {
+  if (switchValue === enumMatches.NEXT && nextMatchesData?.length === 1) {
     return true;
-  } else if (switchValue === 'previous' && lastMatchesData?.length === 1) {
+  } else if (
+    switchValue === enumMatches.PREVIOUS &&
+    lastMatchesData?.length === 1
+  ) {
     return true;
   }
 

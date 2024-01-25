@@ -1,13 +1,13 @@
 import {theme} from '../../../styles/theme';
 
 export const switchOptions = [
-  {label: 'Próximos jogos', value: 'next'},
-  {label: 'Últimos jogos', value: 'previous'},
+  {label: 'Próximos jogos', value: 0},
+  {label: 'Últimos jogos', value: 1},
 ];
 
 interface SwitchSelectorProps {
-  switchValue: string;
-  setSwitchValue: (value: string) => void;
+  switchValue: number;
+  setSwitchValue: (value: number) => void;
   setDisplayedItems: (value: number) => void;
 }
 
@@ -28,7 +28,7 @@ export const setSwitchProps = ({
   borderWidth: 0,
   style: {width: '80%', alignSelf: 'center'},
   activeOpacity: 0.8,
-  onPress: (value: string) => {
+  onPress: (value: number) => {
     setSwitchValue(value);
     setDisplayedItems(3);
   },

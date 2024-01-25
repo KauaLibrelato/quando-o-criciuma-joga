@@ -16,16 +16,18 @@ export function TableScreen() {
   }, []);
   return (
     <Styles.Container>
-      <Styles.ChampionshipTitle>Campeonato Catarinense</Styles.ChampionshipTitle>
+      <Styles.ChampionshipTitle>
+        Campeonato Catarinense
+      </Styles.ChampionshipTitle>
       <Styles.TableContainer>
         <Styles.View>
-          <Table style={{borderTopLeftRadius: 8, borderTopRightRadius: 8}} >
+          <Table style={{borderTopLeftRadius: 8, borderTopRightRadius: 8}}>
             <Row {...tableHeaderProps} />
           </Table>
           <Styles.RowsScrollView>
             <Table>
               {rows.map((team, index) => (
-                <Row {...tableRowProps(index, team)} />
+                <Row key={index} {...tableRowProps(index, team)} />
               ))}
             </Table>
           </Styles.RowsScrollView>
