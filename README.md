@@ -1,8 +1,8 @@
 ## Descroção do projeto
 
-Este projeto é um aplicativo não oficial do Criciúma E.C em React Native
+Este projeto é um aplicativo não oficial do Criciúma E.C.
 
-**APLICATIVO QUANDO O CRICIÚMA JOGA**
+**BIBLIOTECAS UTILIZADAS**
 
 - Axios
 - React Hook Form
