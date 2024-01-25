@@ -1,37 +1,35 @@
-import React from 'react';
-import {Row, Table} from 'react-native-table-component';
-import {theme} from '../../styles/theme';
+import React, {useEffect, useState} from 'react';
+import {Row, Table} from 'react-native-reanimated-table';
 import * as Styles from './styles';
+import {getAllRowsTable, tableHeaderProps, tableRowProps} from './utils';
+
 export function TableScreen() {
+  const [rows, setRows] = useState<string[][]>([]);
+
+  const fetchData = async () => {
+    const data = await getAllRowsTable();
+    setRows(data);
+  };
+
+  useEffect(() => {
+    fetchData();
+  }, []);
   return (
     <Styles.Container>
+      <Styles.ChampionshipTitle>Campeonato Catarinense</Styles.ChampionshipTitle>
       <Styles.TableContainer>
-        <Table>
-          <Row
-            borderStyle={{
-              borderWidth: 1,
-              borderColor: theme.colors.tableHeader,
-            }}
-            data={[
-              'Classificação',
-              'P',
-              'J',
-              'V',
-              'E',
-              'D',
-              'GP',
-              'GC',
-              'SG',
-              '%',
-            ]}
-            widthArr={[100, 30, 30, 30, 30, 30, 30, 30, 30, 30]}
-            style={{
-              height: 40,
-              backgroundColor: theme.colors.tableRow,
-            }}
-            textStyle={{textAlign: 'center', color: theme.colors.textColor}}
-          />
-        </Table>
+        <Styles.View>
+          <Table style={{borderTopLeftRadius: 8, borderTopRightRadius: 8}} >
+            <Row {...tableHeaderProps} />
+          </Table>
+          <Styles.RowsScrollView>
+            <Table>
+              {rows.map((team, index) => (
+                <Row {...tableRowProps(index, team)} />
+              ))}
+            </Table>
+          </Styles.RowsScrollView>
+        </Styles.View>
       </Styles.TableContainer>
     </Styles.Container>
   );

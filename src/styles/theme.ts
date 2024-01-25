@@ -1,12 +1,4 @@
 export const theme = {
-  fonts: {
-    primary300: 'Inter_300Light',
-    primary400: 'Inter_400Regular',
-    primary500: 'Inter_500Medium',
-    primary600: 'Inter_600SemiBold',
-    primary700: 'Inter_700Bold',
-  } as const,
-
   colors: {
     bgColor: '#FACC15',
     lowYellow: '#FFEFCC',
@@ -14,9 +6,11 @@ export const theme = {
     white: '#FFFFFF',
     textColor: '#2B2B2B',
     red: '#D5150B',
+    lowRed: '#FFDBD9',
     green: '#20C634',
     tableRow: '#F1F5F9',
-    tableHeader: '#CBD5E1',
+    tableHeader: '#DEE5ED',
+    lowBlue: '#c3c8fa',
   } as const,
 
   size: {

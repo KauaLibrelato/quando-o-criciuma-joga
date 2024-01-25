@@ -8,11 +8,13 @@ export const switchOptions = [
 interface SwitchSelectorProps {
   switchValue: string;
   setSwitchValue: (value: string) => void;
+  setDisplayedItems: (value: number) => void;
 }
 
 export const setSwitchProps = ({
   switchValue,
   setSwitchValue,
+  setDisplayedItems,
 }: SwitchSelectorProps) => ({
   options: switchOptions,
   initial: 0,
@@ -26,6 +28,8 @@ export const setSwitchProps = ({
   borderWidth: 0,
   style: {width: '80%', alignSelf: 'center'},
   activeOpacity: 0.8,
-  onPress: (value: string) => setSwitchValue(value),
+  onPress: (value: string) => {
+    setSwitchValue(value);
+    setDisplayedItems(3);
+  },
 });
-

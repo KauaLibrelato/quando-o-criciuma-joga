@@ -75,4 +75,5 @@ interface MatchData {
 interface MatchesResponse {
   nextMatchesData: [MatchData];
   lastMatchesData: [MatchData];
+  tableData: [TableData];
 }

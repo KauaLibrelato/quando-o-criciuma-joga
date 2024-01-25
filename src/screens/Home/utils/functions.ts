@@ -1,9 +1,11 @@
 import {useQuery} from '@tanstack/react-query';
 import axios, {AxiosPromise} from 'axios';
 import {apiUrl} from '../../../utils/url';
+import {storageService} from '../../Table/utils/storageService';
 
 async function getNextMatches(): AxiosPromise<MatchesResponse> {
   const matches = await axios.get<MatchesResponse>(apiUrl);
+  storageService.setItem('tableData', matches.data?.tableData);
   return matches;
 }
 

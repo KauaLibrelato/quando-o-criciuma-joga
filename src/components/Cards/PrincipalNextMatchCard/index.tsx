@@ -27,8 +27,10 @@ export function PrincipalNextMatchCard({...data}) {
           color={theme.colors.textColor}
         />
         <Styles.Day>
-          {format(data?.fixture.date, 'dd/MM/yyyy')} -{' '}
-          {compareDate(data?.fixture.date)}
+          {format(data?.fixture.date, 'dd/MM/yyyy')}
+          {compareDate(data?.fixture.date)
+            ? ` - ${compareDate(data?.fixture.date)}`
+            : ''}
         </Styles.Day>
       </Styles.DayContainer>
 
@@ -92,10 +94,11 @@ export function PrincipalNextMatchCard({...data}) {
           </Styles.TeamText>
         </Styles.Teams>
 
-        <Styles.Championship>{data?.league?.name}</Styles.Championship>
+        <Styles.Championship>
+          {data?.league?.name?.split('-')[0]}
+        </Styles.Championship>
 
         <Styles.StadiumContainer>
-          <Icon.HouseSimple />
           <Styles.StadiumText>{data?.fixture?.venue?.name}</Styles.StadiumText>
         </Styles.StadiumContainer>
       </Styles.MatchInfos>

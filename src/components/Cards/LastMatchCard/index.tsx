@@ -24,7 +24,9 @@ export function LastMatchCard({one, data}: LastMatchCardProps) {
           <Styles.ResultText>{`${data?.goals?.home} - ${data?.goals?.away}`}</Styles.ResultText>
         </Styles.ResultContainer>
 
-        <Styles.Championship>{data?.league?.name}</Styles.Championship>
+        <Styles.Championship>
+          {data?.league?.name?.split('-')[0]}
+        </Styles.Championship>
       </Styles.CenterContainer>
       <Styles.RightContainer>
         <Styles.Image source={{uri: data?.teams?.away?.logo}} />

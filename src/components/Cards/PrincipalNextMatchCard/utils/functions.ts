@@ -1,4 +1,4 @@
-import {differenceInSeconds, format} from 'date-fns';
+import {differenceInSeconds} from 'date-fns';
 
 function formatTimeUnit(unit: number) {
   return unit < 10 ? `0${unit}` : unit;
@@ -23,7 +23,7 @@ export function calculateTimeRemaining(targetDate: Date) {
   };
 }
 
-export function compareDate(specificDate: Date): string {
+export function compareDate(specificDate: Date): string | undefined {
   const hoje = new Date();
   hoje.setHours(0, 0, 0, 0);
 
@@ -38,7 +38,5 @@ export function compareDate(specificDate: Date): string {
     return 'Hoje';
   } else if (differenceEmDias === 1) {
     return 'Amanhã';
-  } else {
-    return format(specificDate, 'dd/MM/yyyy');
   }
 }
