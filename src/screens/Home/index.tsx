@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import React, {useEffect, useRef, useState} from 'react';
 import {FlatList, ListRenderItem} from 'react-native';
 import SwitchSelector from 'react-native-switch-selector';
 import {
@@ -8,6 +8,7 @@ import {
   PrincipalNextMatchCard,
 } from '../../components';
 import {enumMatches} from '../../utils/constants';
+import {storageService} from '../Table/utils';
 import * as Styles from './styles';
 import {
   setSwitchProps,
@@ -17,9 +18,16 @@ import {
 } from './utils';
 
 export function Home() {
-  const {data, isLoading} = useMatchesData();
+  const {isLoading} = useMatchesData();
   const [switchValue, setSwitchValue] = useState(switchOptions[0].value);
   const [displayedItems, setDisplayedItems] = useState(3);
+  const [data, setData] = useState<MatchesResponse>();
+  const flatListRef = useRef<FlatList>(null);
+
+  async function getData() {
+    const dataInfos = await storageService.getItem('data');
+    setData(dataInfos as MatchesResponse);
+  }
 
   const switchProps = setSwitchProps({
     switchValue,
@@ -28,6 +36,11 @@ export function Home() {
   });
 
   const principalMatch = data?.nextMatchesData[0];
+
+  const updateDisplayedItems = () => {
+    setDisplayedItems(3);
+    flatListRef.current?.scrollToOffset({animated: true, offset: 0});
+  };
 
   const renderItem: ListRenderItem<MatchData> = ({item}) => {
     return (
@@ -40,6 +53,14 @@ export function Home() {
       </>
     );
   };
+
+  useEffect(() => {
+    getData();
+  }, []);
+
+  useEffect(() => {
+    updateDisplayedItems();
+  }, [data, switchValue]);
 
   return (
     <>
@@ -57,6 +78,7 @@ export function Home() {
 
           <Styles.Content>
             <FlatList
+              ref={flatListRef}
               horizontal
               showsHorizontalScrollIndicator={false}
               keyExtractor={item => item.fixture.id.toString()}

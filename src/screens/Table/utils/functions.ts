@@ -1,5 +1,5 @@
-import {theme} from '../../../styles/theme';
-import {storageService} from './storageService';
+import { theme } from '../../../styles/theme';
+import { storageService } from './storageService';
 
 export function calculateWinningPercentage(
   pointsEarned: number,
@@ -27,9 +27,9 @@ function getRowsTableData(item: TableData) {
 }
 
 export async function getAllRowsTable() {
-  const items: TableData[] = await storageService.getItem('tableData');
+  const items: MatchesResponse = await storageService.getItem('data');
 
-  return items.map((item: TableData) => {
+  return items.tableData.map((item: TableData) => {
     return getRowsTableData(item);
   });
 }
