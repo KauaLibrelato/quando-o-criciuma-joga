@@ -1,30 +1,17 @@
 import {useQuery} from '@tanstack/react-query';
-import axios from 'axios';
+import axios, {AxiosPromise} from 'axios';
 import {isSameDay} from 'date-fns';
-import {showMessage} from 'react-native-flash-message';
 import {enumMatches} from '../../../utils/constants';
 import {storageService} from '../../Table/utils/storageService';
 
-async function getNextMatches() {
-  const lastCallFunction = await storageService.getItem('lastCallFunction');
+async function getNextMatches(): AxiosPromise<MatchesResponse> {
+  const matches = await axios.get<MatchesResponse>(String(process.env.API_URL));
+  const tableData: TableData[] = await storageService.getItem('tableData');
 
-  if (
-    !lastCallFunction ||
-    !isSameDay(new Date(JSON.parse(String(lastCallFunction))), new Date())
-  ) {
-    try {
-      const matches = await axios.get<MatchesResponse>(
-        String(process.env.API_URL),
-      );
-      storageService.setItem('data', matches.data);
-      storageService.setItem('lastCallFunction', JSON.stringify(new Date()));
-      return matches;
-    } catch (error) {
-      showMessage({type: 'danger', message: 'Erro ao buscar dados'});
-      return {data: undefined};
-    }
+  if (!tableData || !isSameDay(new Date(), new Date(tableData[0]?.update))) {
+    storageService.setItem('tableData', matches.data?.tableData);
   }
-  return {data: undefined};
+  return matches;
 }
 
 export function useMatchesData() {
